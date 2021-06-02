@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>">
-<link rel="stylesheet" href="<?= base_url('assets/css/estilo.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/customcss/estilo.css') ?>">
 <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
 <script src="<?= base_url('assets/Jquery/jquery-1.6.3.min.js') ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -23,6 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		$("#letras").hide().fadeIn(2000);
 });
+
+
 
 
 
