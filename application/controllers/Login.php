@@ -1,14 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller 
+class Login extends MY_Controller 
 {
 	public function __construct()
     {
 		parent::__construct();
 
-
-		$this->load->helper("url");
 		$this->load->helper("Test");
         $this->load->model('Usuario_model');
 	}
@@ -16,8 +14,14 @@ class Login extends CI_Controller
 
 	public function index()
 	{   
-		$this->load->view('auth/login');
-		
+		$data = array(
+			'titulo' => 'FODASOFT | Autenticación'
+		);
+		$param = array(
+			'vista'	=> 'outside/login',
+			'data'	=> $data
+		);
+		$this->plantillaLogin($param);
 	}
 
 
