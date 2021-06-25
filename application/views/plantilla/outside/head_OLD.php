@@ -29,11 +29,38 @@
   <!-- animate -->
   <link rel="stylesheet" href="<?= base_url('assets/libraries/animate/animate.min.css') ?>">
 
-  <!-- All -->
-  <link rel="stylesheet" href="<?= base_url('assets/custom/all/css/generico.css') ?>">
-
   <!-- Outside -->
   <link rel="stylesheet" href="<?= base_url('assets/custom/outside/css/estilo.css') ?>">
+
+  <script>
+    $(document).ready(function() {
+
+      $("#letras").hide().fadeIn(2000);
+    });
+
+
+
+
+
+
+
+
+    /*$("#boto").toggle(function(){
+      $("#panel").animate(
+
+        {
+          left:"0vw"
+        });
+    },function(){
+
+      $("#panel").animate(
+
+        {
+          left:"-18vw"
+        });
+
+    });*/
+  </script>
 </head>
 
 <body>

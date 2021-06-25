@@ -2,7 +2,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Usuario_model extends CI_Model
+class Usuario_model extends MY_Model
 {
     /**
      * Permission constructor.
@@ -13,9 +13,9 @@ class Usuario_model extends CI_Model
     }
 
 
-    
 
-/**
+
+    /**
      * Update de ejemplo
      */
     /*
@@ -40,20 +40,12 @@ class Usuario_model extends CI_Model
     }
     */
 
-    public function getUsuario($nombre, $clave){
-        $datos = array();
-        $sql = "SELECT nombre, clave FROM usuarios WHERE nombre = '$nombre' AND clave = '$clave'";
-        $query = $this->db->query($sql);
-        $datos = $query->result_array();
-        $this->db->close();
-
-        if($datos != null){
-            return $datos[0];
-        }else{
-            return null;
-        }
+    public function getUsuario($nombre, $clave)
+    {
+        $sql = "SELECT nombre, clave FROM usuario WHERE nombre = '$nombre' AND clave = '$clave'";
+        return $this->ejecutarConsulta($sql, "array", "primer-registro");
     }
-    
+
 
     /**
      * Insert de ejemplo
@@ -78,11 +70,4 @@ class Usuario_model extends CI_Model
         $this->db->close();
     }
     */
-
-
-
-    
- 
-
-    
 }

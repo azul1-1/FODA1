@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $autoload['packages'] = array();
 
 
-$autoload['helper'] = array('url', 'test');
+$autoload['helper'] = array('url', 'test', 'mensajes');
 
 
 /*

@@ -37,13 +37,13 @@
     <div class="row">
         <div class='fieldset'>
             <span><i class='fa fa-user'></i></span>
-            <input id='txt-l-usuario' placeholder='Usuario' class='input-text'>
+            <input id='txt-l-usuario' placeholder='Usuario' class='input-text' required>
         </div>
     </div>
     <div class="row">
         <div class='fieldset'>
             <span><i class='fas fa-lock'></i></span>
-            <input id='txt-l-clave' placeholder='Clave' type='password' class='input-text'>
+            <input id='txt-l-clave' placeholder='Contraseña' type='password' class='input-text' required>
         </div>
     </div>
     <div class="row">
@@ -59,25 +59,25 @@
     <div class="row">
         <div class='fieldset'>
             <span><i class='fa fa-user'></i></span>
-            <input id='txt-r-usuario' placeholder='Usuario' class='input-text'>
+            <input id='txt-r-usuario' placeholder='Usuario' class='input-text' required>
         </div>
     </div>
     <div class="row">
         <div class='fieldset'>
             <span><i class='fas fa-at'></i></span>
-            <input id='txt-r-email' placeholder='Email' class='input-text'>
+            <input id='txt-r-email' placeholder='Email' class='input-text' required>
         </div>
     </div>
     <div class="row">
         <div class='fieldset'>
             <span><i class='fas fa-lock'></i></span>
-            <input id='txt-r-clave' placeholder='Contraseña' type='password' class='input-text'>
+            <input id='txt-r-clave' placeholder='Contraseña' type='password' class='input-text' required>
         </div>
     </div>
     <div class="row">
         <div class='fieldset'>
             <span><i class='fas fa-lock'></i></span>
-            <input id='txt-r-rep-clave' placeholder='Repetir contraseña' type='password' class='input-text'>
+            <input id='txt-r-rep-clave' placeholder='Repetir contraseña' type='password' class='input-text' required>
         </div>
     </div>
     <div class="row">
@@ -96,7 +96,7 @@
     <div class="row">
         <div class='fieldset'>
             <span><i class='fas fa-at'></i></span>
-            <input id='txt-rc-email' placeholder='Email' class='input-text'>
+            <input id='txt-rc-email' placeholder='Email' class='input-text' required>
         </div>
     </div>
     <div class="row">

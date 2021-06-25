@@ -4,14 +4,14 @@ $(document).ready(function () {
 });
 
 /* CAMBIO DE SECCIONES */
-$(document).on('click', '#btn-seccion-registro', function () {
-    cambiarSeccion("a registro");
-    cambiarCaritaA(":)", "volteada");
-});
-
 $(document).on('click', '#btn-seccion-login', function () {
     cambiarSeccion("a login");
-    cambiarCaritaA(":)", "volteada");
+    cambiarCaritaA(":)", "volteada", "verde");
+});
+
+$(document).on('click', '#btn-seccion-registro', function () {
+    cambiarSeccion("a registro");
+    cambiarCaritaA(":)", "volteada", "verde");
 });
 
 $(document).on('click', '#btn-seccion-recuperar-clave', function (event) {
@@ -64,17 +64,74 @@ function cambiarSeccion(nuevaSeccion) {
     }
 }
 
+/* BOTONES DE FORMULARIOS */
+$(document).on('click', '#btn-login', function (event) {
+    event.preventDefault();
+    iniciarSeccion();
+});
+
+/* AJAX */
+function iniciarSeccion() {
+    let baseUrl = $("title").data("baseurl");
+    let usuario = $("#txt-l-usuario").val();
+    let clave = $("#txt-l-clave").val();
+
+    $.ajax({
+        url: baseUrl + 'Login/validarUsuario',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            usuario: usuario,
+            clave: clave
+        },
+        async: true
+    })
+        .done(function (result) {
+            cambiarIcon(result.icon, result.color);
+            mensaje(result.mensaje);
+            if (result.ok) {
+                cargando("mensaje");
+                window.setTimeout(function () {
+                    location.href = baseUrl + 'home';
+                }, 3000);
+            }
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            console.error('error en iniciarSeccion : ' + textStatus + ' ' + errorThrown);
+        })
+}
+
+
+
 /* MENSAJES Y CARITAS */
 $(document).on('mouseenter', '#btn-seccion-recuperar-clave', function () {
-    cambiarCaritaA(":|", "volteada");
+    cambiarCaritaA(":|", "volteada", "amarilla");
     mensaje("¿Olvidó su contraseña?");
 });
 $(document).on('mouseleave', '#btn-seccion-recuperar-clave', function () {
-    cambiarCaritaA(":)", "volteada");
+    cambiarCaritaA(":)", "volteada", "verde");
     mensajePorDefecto();
 });
 
-function cambiarCaritaA(carita, orientacion) {
+function cambiarCaritaA(carita, orientacion, color = "verde") {
+    //Quitar color, disposición de ícono e ícono
+    let circle = $(".circulo");
+    circle.css("padding-top", "0px");
+    circle.removeClass("fas fa-check fa-exclamation fa-times");
+
+    switch (color) {
+        case "verde":
+            circle.css("background", "#42C474");
+            break;
+        case "amarilla":
+            circle.css("background", "#C48B42");
+            break;
+        case "roja":
+            circle.css("background", "#C44242");
+            break;
+    }
+
+    //Agregar carita
     let smile = $("#carita");
     switch (orientacion) {
         case "volteada":
@@ -89,9 +146,24 @@ function cambiarCaritaA(carita, orientacion) {
     smile.text(carita);
 }
 
+function cambiarIcon(icon, color) {
+    //Quitar carita
+    $("#carita").text("");
+    //Acomodar dispocisión para ícono
+    let circle = $(".circulo");
+    circle.css("background", color);
+    circle.css("display", "block");
+    circle.css("padding-top", "5px");
+    //Agregar ícono
+    circle.addClass(icon);
+}
+
 function mensajePorDefecto() {
     $("#mensaje").text("Bienvenido, visitante");
 }
 function mensaje(texto) {
     $("#mensaje").text(texto);
+}
+function cargando(id) {
+    $(`#${id}`).addClass("loading");
 }
