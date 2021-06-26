@@ -1,6 +1,7 @@
 /* INICIO */
 $(document).ready(function () {
     cambiarSeccion("a login");
+    //cambiarFocoConEnter("txt-l-usuario"); //No funciona D:
 });
 
 /* CAMBIO DE SECCIONES */
@@ -76,29 +77,41 @@ function iniciarSeccion() {
     let usuario = $("#txt-l-usuario").val();
     let clave = $("#txt-l-clave").val();
 
-    $.ajax({
-        url: baseUrl + 'Login/validarUsuario',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            usuario: usuario,
-            clave: clave
-        },
-        async: true
-    })
-        .done(function (result) {
-            cambiarIcon(result.icon, result.color);
-            mensaje(result.mensaje);
-            if (result.ok) {
-                cargando("mensaje");
-                window.setTimeout(function () {
-                    location.href = baseUrl + 'home';
-                }, 3000);
-            }
+    let valida = false;
+    let mensajeError = "No funciona, estoy en proceso de desarrollo...<br>";
+    quitarCantidadDeErrores("msg-verificacion");
+    agregarMensajeDeError("msg-verificacion", mensajeError);
+    //Acá van validacione que cambien el "valida" a true
+
+    if (valida) {
+        $.ajax({
+            url: baseUrl + 'Login/validarUsuario',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                usuario: usuario,
+                clave: clave
+            },
+            async: true
         })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            console.error('error en iniciarSeccion : ' + textStatus + ' ' + errorThrown);
-        })
+            .done(function (result) {
+                cambiarIcon(result.icon, result.color);
+                mensaje(result.mensaje);
+                if (result.ok) {
+                    cargando("mensaje");
+                    window.setTimeout(function () {
+                        location.href = baseUrl + 'home';
+                    }, 3000);
+                }
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.error('error en iniciarSeccion : ' + textStatus + ' ' + errorThrown);
+            })
+    } else {
+        //enviar mensaje
+        cambiarCaritaA(":(", "volteada", "amarilla");
+        mensaje(obtenerMensajesDeError("msg-verificacion"));
+    }
 }
 
 
@@ -162,7 +175,7 @@ function mensajePorDefecto() {
     $("#mensaje").text("Bienvenido, visitante");
 }
 function mensaje(texto) {
-    $("#mensaje").text(texto);
+    $("#mensaje").html(texto);
 }
 function cargando(id) {
     $(`#${id}`).addClass("loading");

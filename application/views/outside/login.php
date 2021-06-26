@@ -16,12 +16,15 @@
         </div>
     </div>
 
-    <form id='form-auth' formaction='login' data-seccion='ass'>
+    <form id='form-auth'>
     </form>
 
     <div id='panelInfo' class='aling-content-center'>
         <div class="circulo mx-auto">
             <div id='carita' class='icon-volteado'>:)</div>
+        </div>
+        <div class="d-none">
+            <input type="hidden" id="msg-verificacion" data-errores="0">
         </div>
         <div id="mensaje">
             Bienvenido, visitante.

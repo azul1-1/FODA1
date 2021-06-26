@@ -31,6 +31,14 @@
 
   <!-- All -->
   <link rel="stylesheet" href="<?= base_url('assets/custom/all/css/generico.css') ?>">
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/divs-bloqueadores.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/divs-ocultadores.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/forms-acciones-usuario.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/forms-marcas.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/forms-mensajes.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/forms-verificadores.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/funct-conversores.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/custom/all/js/funct-validadores.js'); ?>"></script>
 
   <!-- Outside -->
   <link rel="stylesheet" href="<?= base_url('assets/custom/outside/css/estilo.css') ?>">
